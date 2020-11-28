@@ -1,0 +1,24 @@
+.title {
+	font-weight: bold;
+	font-size: 30px;
+}
+
+#asd2f {
+	color: blue;	
+}
+
+.center{
+	text-align:center; 
+}
+table{
+	width: 100%;
+}
+.w40{
+	width: 40%;
+}
+.w60{
+	width: 60%;
+}
+img{
+	max-width: 200px;
+}
