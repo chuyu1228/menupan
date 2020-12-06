@@ -1,0 +1,296 @@
+<html>
+    <head>
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        />
+        <script
+            src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous"
+        ></script>
+		<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82015/three.js"></script>
+		<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82015/snow.js"></script>
+        <script src="tree.js"></script>
+		<script src="snow.js"></script>
+		<script src="game.js"></script>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <br />
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1><em>Happy Christmas</em></h1>
+                </div>
+				        <br />
+				        <br />
+
+                <div class="box container">
+                    <h2 style="color:#920613f0; font-family: Comic Sans MS;">2020 Christmas Party!</h2>
+                </div>
+            </div>
+        </div>
+
+        <canvas
+            id="scene"
+            width="500px;"
+            height="500px" 
+            style="position: fixed; right: -46px; top: -46px; display: block; margin: 0 auto;"
+        ></canvas>
+
+        <div class="container">
+            <div class="row" style="margin: 50px;">
+                <div class="col text-center">
+                    <h3>Games</h3>
+					<ol class="box">
+						<li>Dart Game</li>
+						<li>Video Game</li>
+						<li>Console Game</li>
+						<li>Board Game</li>
+						<li>Gamble Game</li>
+						<li>Variety Game</li>
+					</ul>
+					
+
+                    <button
+                        class="btn btn-danger"
+                        onclick="genQuestion()"
+                        style="margin-top: 30px;"
+                    >
+                        랜덤 자음 생성! +3점
+                    </button>
+                    <div class="box" style="margin-top: 50px;">
+                        <button
+                            class="btn btn-lg btn-outline-danger"
+                            readonly="readonly"
+                            id="question"
+                        >
+                            시작
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col text-center">
+                    <h3>선물 뽑기</h3>
+
+                    <div id="panel1" class="box">
+                        1
+                        <!-- 이곳에 숫자가 출력됩니다. -->
+                    </div>
+                    <div id="nav" >
+                        <input type="text" style="display: none;" id="lab_total" value="5" /><br />
+                        <button id="btn_start" class="btn btn-success">시작</button>
+                        <button id="btn_stop" class="btn btn-primary">멈춤</button>
+                        <button id="btn_reset" class="btn btn-danger">리셋</button>
+                    </div>
+					<br/>
+
+                    <div id="panel2" class="box" style="    overflow: auto;">
+                        <!-- 이곳에 당첨번호가 출력됩니다. -->
+                    </div>
+                </div>
+
+                <div class="col text-center">
+                    <h3>점수판</h3>
+                    <ul class="box">
+                        <li>
+                            <button class="btn btn-sm btn-danger" onclick="gotPoint('.s1',-3)">
+                                -3
+                            </button>
+                            <button class="btn btn-sm btn-danger" onclick="gotPoint('.s1',-2)">
+                                -2
+                            </button>
+                            <button class="btn btn-sm btn-danger" onclick="gotPoint('.s1',-1)">
+                                -1
+                            </button>
+                            용훈
+                            <button class="btn btn-sm btn-success" onclick="gotPoint('.s1',1)">
+                                +1
+                            </button>
+                            <button class="btn btn-sm btn-success" onclick="gotPoint('.s1',2)">
+                                +2
+                            </button>
+                            <button class="btn btn-sm btn-success" onclick="gotPoint('.s1',3)">
+                                +3</button
+                            ><span class="score s1">0</span>
+                        </li>
+                        <li>
+                            <button class="btn btn-sm btn-danger" onclick="gotPoint('.s2',-3)">
+                                -3
+                            </button>
+                            <button class="btn btn-sm btn-danger" onclick="gotPoint('.s2',-2)">
+                                -2
+                            </button>
+                            <button class="btn btn-sm btn-danger" onclick="gotPoint('.s2',-1)">
+                                -1
+                            </button>
+                            축우
+                            <button class="btn btn-sm btn-success" onclick="gotPoint('.s2',1)">
+                                +1
+                            </button>
+                            <button class="btn btn-sm btn-success" onclick="gotPoint('.s2',2)">
+                                +2
+                            </button>
+                            <button class="btn btn-sm btn-success" onclick="gotPoint('.s2',3)">
+                                +3</button
+                            ><span class="score s2">0</span>
+                        </li>
+
+                        <li>
+                            <button class="btn btn-sm btn-danger" onclick="gotPoint('.s4',-3)">
+                                -3
+                            </button>
+                            <button class="btn btn-sm btn-danger" onclick="gotPoint('.s4',-2)">
+                                -2
+                            </button>
+                            <button class="btn btn-sm btn-danger" onclick="gotPoint('.s4',-1)">
+                                -1
+                            </button>
+                            명훈
+                            <button class="btn btn-sm btn-success" onclick="gotPoint('.s4',1)">
+                                +1
+                            </button>
+                            <button class="btn btn-sm btn-success" onclick="gotPoint('.s4',2)">
+                                +2
+                            </button>
+                            <button class="btn btn-sm btn-success" onclick="gotPoint('.s4',3)">
+                                +3</button
+                            ><span class="score s4">0</span>
+                        </li>
+                        <li>
+                            <button class="btn btn-sm btn-danger" onclick="gotPoint('.s5',-3)">
+                                -3
+                            </button>
+                            <button class="btn btn-sm btn-danger" onclick="gotPoint('.s5',-2)">
+                                -2
+                            </button>
+                            <button class="btn btn-sm btn-danger" onclick="gotPoint('.s5',-1)">
+                                -1
+                            </button>
+                            재욱
+                            <button class="btn btn-sm btn-success" onclick="gotPoint('.s5',1)">
+                                +1
+                            </button>
+                            <button class="btn btn-sm btn-success" onclick="gotPoint('.s5',2)">
+                                +2
+                            </button>
+                            <button class="btn btn-sm btn-success" onclick="gotPoint('.s5',3)">
+                                +3</button
+                            ><span class="score s5">0</span>
+                        </li>
+                        <li>
+                            <button class="btn btn-sm btn-danger" onclick="gotPoint('.s6',-3)">
+                                -3
+                            </button>
+                            <button class="btn btn-sm btn-danger" onclick="gotPoint('.s6',-2)">
+                                -2
+                            </button>
+                            <button class="btn btn-sm btn-danger" onclick="gotPoint('.s6',-1)">
+                                -1
+                            </button>
+                            아량
+                            <button class="btn btn-sm btn-success" onclick="gotPoint('.s6',1)">
+                                +1
+                            </button>
+                            <button class="btn btn-sm btn-success" onclick="gotPoint('.s6',2)">
+                                +2
+                            </button>
+                            <button class="btn btn-sm btn-success" onclick="gotPoint('.s6',3)">
+                                +3</button
+                            ><span class="score s6">0</span>
+                        </li>
+                    </ul>
+                    <button id="score_reset" class="btn btn-danger" onclick="$('.score').html(0)">
+                        리셋
+                    </button>
+                </div>
+            </div>
+        </div>
+
+		
+		
+		<!-- <audio src="//katiebaca.com/codepen/merry-christmas-mr-lawrence.mp3" autoplay loop></audio> -->
+        <script>
+            
+
+function init() { //snow
+
+	container = document.createElement('div');
+	document.body.appendChild(container);
+
+	camera = new THREE.PerspectiveCamera( 75, SCREEN_WIDTH / SCREEN_HEIGHT, 1, 10000 );
+	camera.position.z = 1000;
+
+	scene = new THREE.Scene();
+	scene.add(camera);
+		
+	renderer = new THREE.CanvasRenderer();
+	renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+	var material = new THREE.ParticleBasicMaterial( { map: new THREE.Texture(particleImage) } );
+		
+	for (var i = 0; i < 100; i++) {
+
+		particle = new Particle3D( material);
+		particle.position.x = Math.random() * 2000 - 1000;
+		particle.position.y = Math.random() * 2000 - 1000;
+		particle.position.z = Math.random() * 2000 - 1000;
+		particle.scale.x = particle.scale.y =  1;
+		scene.add( particle );
+		
+		particles.push(particle); 
+	}
+
+	container.appendChild( renderer.domElement );
+
+
+	document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+	document.addEventListener( 'touchstart', onDocumentTouchStart, false );
+	document.addEventListener( 'touchmove', onDocumentTouchMove, false );
+	
+	setInterval( loop, 1000 / 60 );
+	
+}
+var SCREEN_WIDTH = window.innerWidth;
+var SCREEN_HEIGHT = window.innerHeight;
+
+var container;
+
+var particle;
+
+var camera;
+var scene;
+var renderer;
+
+var mouseX = 0;
+var mouseY = 0;
+
+var windowHalfX = window.innerWidth / 2;
+var windowHalfY = window.innerHeight / 2;
+
+var particles = []; 
+var particleImage = new Image();
+particleImage.src = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/82015/snowflake.png'; 
+
+			
+			//game
+			 var panel1;
+            var nTimerID;
+            var labTotal;
+            var nTotalMember;
+            var resultPanelCnt = 0;
+           
+			
+            $(document).ready(function () {
+				
+				// 요소 초기화 실행.
+                initRand();
+                // 이벤트 초기화 실행.
+                initEventListener();
+				
+				init(); //snow
+                run(); //tree
+            });
+        </script>
+    </body>
+</html>
