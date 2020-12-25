@@ -79,8 +79,8 @@ h1 {
 
 
     body{
-		overflow:scroll;
-        background-image: url("./xmasbg.jpeg");
+		overflow:hidden;
+        background-image: url("https://images.pexels.com/photos/1303085/pexels-photo-1303085.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
 		background-repeat:no-repeat;
 		background-position: center;
         background-size: cover;
